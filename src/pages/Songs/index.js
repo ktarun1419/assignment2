@@ -33,6 +33,7 @@ const SongList = () => {
   const [songs, setSongs] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedSong, setSelectedSong] = useState({});
+  const [selectedIndex,setIndex]=useState(0)
   const Logout = () => {
     dispatch(updateAuthenication(false));
     dispatch(updateToken(""));
@@ -41,6 +42,20 @@ const SongList = () => {
   const Addsong = (song) => {
     setSongs([...songs, song]);
   };
+  const SetSelectedSong=(song,index)=>{
+    setSelectedSong(song)
+    setIndex(index)
+  }
+  const handleClickNext=()=>{
+    if (selectedIndex<songs.length-1) {
+        SetSelectedSong(songs[selectedIndex+1],selectedIndex+1)
+    }
+  }
+  const  handleClickPrevious=()=>{
+    if (selectedIndex>0) {
+        SetSelectedSong(songs[selectedIndex-1],selectedIndex-1)
+    }
+  }
 
   return (
     <>
@@ -85,12 +100,13 @@ const SongList = () => {
                   source={song.source}
                   addedOn={song.addedOn}
                   thumbnail={song?.thumbnail}
-                  selectSong={() => setSelectedSong(song)}
+                  selectSong={() => SetSelectedSong(song,index)}
                 />
               ))
             : "No Songs "}
         </div>
         <div className="player">
+            {console.log({selectedSong})}
           {selectedSong?.source && (
             <AudioPlayer
               autoPlay
@@ -98,6 +114,8 @@ const SongList = () => {
               onPlay={(e) => console.log("onPlay")}
               header={<h4>{selectedSong?.title}</h4>}
               layout="horizontal"
+              onClickNext={handleClickNext}
+              onClickPrevious={handleClickPrevious}
               crossOrigin="anonymous"
             />
           )}

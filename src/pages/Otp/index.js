@@ -10,7 +10,7 @@ const OTPVerification = () => {
   const location = useLocation();
   const history=useNavigate()
   const dispatch=useDispatch()
-  const routeData = location?.state;
+  let routeData = location?.state;
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return false; // Ensure that only numbers are allowed
     const newOtp = [...otp];
@@ -41,7 +41,6 @@ const OTPVerification = () => {
             dispatch(updateLoading(false))
             history('/songs')
         }
-        // console.log({ res });
       });
   };
   useEffect(()=>{
@@ -49,6 +48,16 @@ const OTPVerification = () => {
         history('/')
     }
   },[])
+  const chagePhoneNumber=()=>{
+    history('/')
+  }
+  const resendOtp=()=>{
+    axios.post('https://dev.api.goongoonalo.com/v1/auth/login',{phoneNumber:`${routeData?.phoneNumber}`}).then((res)=>{
+        console.log({res})
+        routeData.refId=res?.data?.requestId
+        // history('/verify',{state:{phoneNumber:`+91${phoneNumber}`,refId:res?.data?.requestId}})
+    })
+  }
   return (
     <>
       {routeData ? (
@@ -58,6 +67,7 @@ const OTPVerification = () => {
             We have sent an OTP to {routeData?.phoneNumber}. Please enter the
             code received to verify.
           </p>
+          {console.log({routeData})}
           <div className="otp-input-container">
             {otp.map((data, index) => {
               return (
@@ -77,8 +87,8 @@ const OTPVerification = () => {
           <button className="verify-btn" onClick={handleVerify}>
             Verify
           </button>
-          <button className="resend-btn">Resend OTP</button>
-          <button className="change-btn">Use another number</button>
+          <button className="resend-btn" onClick={resendOtp} >Resend OTP</button>
+          <button className="change-btn" onClick={chagePhoneNumber}>Use another number</button>
         </div>
       ) : (
         <></>

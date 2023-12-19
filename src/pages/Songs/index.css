@@ -100,14 +100,14 @@ gap: 8px;
 button {
   margin: 5px;
   padding: 10px 20px;
-  background-color: #4caf50;
+  /* background-color: #4caf50; */
   color: white;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #45a049;
+  /* background-color: #45a049; */
 }
 
 .song {

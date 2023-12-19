@@ -49,15 +49,15 @@ return url.slice(5)
         <form onSubmit={handleSubmit}>
           <label>
             Song Name
-            <input type="text" value={songName} onChange={e => setSongName(e.target.value)} />
+            <input className='add-song-input' type="text" value={songName} onChange={e => setSongName(e.target.value)} />
           </label>
           <label>
             Song Link
-            <input type="text" value={songLink} onChange={e => setSongLink(e.target.value)} />
+            <input  className='add-song-input' type="text" value={songLink} onChange={e => setSongLink(e.target.value)} />
           </label>
           <label>
             Song Source
-            <input type="text" value={songSource} onChange={e => setSongSource(e.target.value)} />
+            <input  className='add-song-input' type="text" value={songSource} onChange={e => setSongSource(e.target.value)} />
           </label>
           <label>
             Click to Upload Profile Thumbnail
