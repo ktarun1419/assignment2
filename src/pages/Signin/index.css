@@ -1,0 +1,86 @@
+/* SignIn.css */
+.signin-container {
+   width: 100%;
+   height: 100vh;
+   margin: auto;
+   text-align: center;
+   
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 600px;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .signin-container h2 {
+    margin-bottom: 10px;
+    color: var(--Primary-Color, #552583);
+font-size: 2.375rem;
+  }
+  
+  .signin-container p {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .input-group {
+    width: 25.4375rem;
+height: 3.6875rem;
+    display: flex;
+    margin-bottom: 20px;
+    padding: 8px;
+    border-radius: 0.5rem;
+border: 1px solid var(--Tertiary-Color, #D0D3D4);
+background: var(--background-white, #FFF);
+  }
+  
+  .input-prefix {
+    display: flex;
+    align-items: center;
+    /* background-color: #eee; */
+    color: var(--text-primary, #101920);
+    
+    font-size: 1.125rem;
+    /* border: 1px solid #ddd; */
+    border-right: none;
+  }
+  
+  .country-flag-icon {
+    width: 24px; /* or the size of your icon */
+    height: auto;
+    margin-right: 5px; /* adjust the space between the icon and the code */
+  }
+  
+  .signin-container input[type="tel"] {
+    flex: 1;
+    padding: 10px;
+    border: 0;
+   
+font-size: 1.125rem;
+    /* border: 1px solid #ddd; */
+  }::placeholder{
+    color: #D0D3D4;
+  }
+
+  
+  .signin-container button {
+    background-color: #7e57c2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 25.625rem;
+height: 3.125rem;
+border-radius: 0.75rem;
+background: var(--Primary-Color, #552583);
+  }
+  
+  .signin-container button:hover {
+    background-color: #673ab7;
+  }
+  
