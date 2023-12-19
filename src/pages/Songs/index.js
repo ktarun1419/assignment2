@@ -10,7 +10,7 @@ import {
 } from "../../store/slices/preLoginSlice";
 import AddSongModal from "../AddSong";
 import { SidebarListing, Svgs } from "./constants";
-function Song({ title, source, addedOn, thumbnail, selectSong }) {
+function Song({ title, source, addedOn, thumbnail, selectSong , deleteSong}) {
   return (
     <div className="song">
       <div className="thumbnail">
@@ -22,7 +22,7 @@ function Song({ title, source, addedOn, thumbnail, selectSong }) {
       <div className="playButton" onClick={selectSong}>
        {Svgs("player")}
       </div>
-      <div className="delete">
+      <div className="delete" onClick={deleteSong}>
        {Svgs("delete")}
       </div>
     </div>
@@ -56,6 +56,11 @@ const SongList = () => {
         SetSelectedSong(songs[selectedIndex-1],selectedIndex-1)
     }
   }
+  const handleDelete=(index)=>{
+    console.log('called')
+    let arr=[...songs]
+    setSongs(songs.filter((item,_idx)=>index!==_idx))
+  }
 
   return (
     <>
@@ -66,6 +71,7 @@ const SongList = () => {
       />
       <div className="song-container">
         <header>
+            {console.log({songs})}
           <nav>
             <div>
               First-level Menu / Second-level Menu / Current Page
@@ -101,6 +107,7 @@ const SongList = () => {
                   addedOn={song.addedOn}
                   thumbnail={song?.thumbnail}
                   selectSong={() => SetSelectedSong(song,index)}
+                  deleteSong={()=>handleDelete(index)}
                 />
               ))
             : "No Songs "}

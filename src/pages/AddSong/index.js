@@ -1,5 +1,5 @@
 // components/AddSongModal.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.css';
 
 function AddSongModal({ isOpen, onClose , Addsong }) {
@@ -19,11 +19,6 @@ function AddSongModal({ isOpen, onClose , Addsong }) {
 
     return day + '/' + month + '/' + year;
 }
-const urlCreate=(file)=>{
-let url= URL.createObjectURL(thumbnail)
-return url.slice(5)
-}
-
   const handleSubmit = (e) => {
     e.preventDefault();
     let data={
@@ -36,10 +31,13 @@ return url.slice(5)
     console.log({data})
     
     Addsong(data)
-    // Here you would handle the submission of the song data
-    console.log(songName, songLink, songSource, thumbnail);
+   setSongName('')
+   setSongLink('')
+   setSongSource('')
+   setThumbnail('')
     onClose(); 
   };
+ 
 
   return (
     <div className="modal">
