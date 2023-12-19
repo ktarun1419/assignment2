@@ -11,10 +11,13 @@ const SignIn = () => {
   const handleSignIn = () => {
     if (phoneNumber.length===10) {
         dispatch(updateLoading(true))
+        
         axios.post('https://dev.api.goongoonalo.com/v1/auth/login',{phoneNumber:`+91${phoneNumber}`}).then((res)=>{
             console.log({res})
             dispatch(updateLoading(false))
             history('/verify',{state:{phoneNumber:`+91${phoneNumber}`,refId:res?.data?.requestId}})
+        }).catch((e)=>{
+            dispatch(updateLoading(false))
         })
     }else{
         alert('Please enter coorect phone number')

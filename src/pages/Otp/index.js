@@ -41,7 +41,9 @@ const OTPVerification = () => {
             dispatch(updateLoading(false))
             history('/songs')
         }
-      });
+      }).catch((e)=>{
+        dispatch(updateLoading(false))
+      })
   };
   useEffect(()=>{
     if (!routeData) {
@@ -56,6 +58,8 @@ const OTPVerification = () => {
         console.log({res})
         routeData.refId=res?.data?.requestId
         // history('/verify',{state:{phoneNumber:`+91${phoneNumber}`,refId:res?.data?.requestId}})
+    }).catch((e)=>{
+
     })
   }
   return (
