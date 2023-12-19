@@ -43,6 +43,8 @@ const OTPVerification = () => {
         }
       }).catch((e)=>{
         dispatch(updateLoading(false))
+        console.log(e)
+        alert(e.message)
       })
   };
   useEffect(()=>{
